@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jones Vastgoed Advies — Shiva Rampersad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --black: #000000;
+  --white: #ffffff;
+  --body-color: #3C3C3C;
+  --gold: #C9A84C;
+  --gold-dark: #8B6914;
+  --navy: #1C2B4A;
+  --radius: 999px;
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: 'Open Sans', sans-serif; color: var(--body-color); background: var(--white); -webkit-font-smoothing: antialiased; }
+
+/* NAV */
+.nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 20px 32px; transition: background 0.3s, box-shadow 0.3s, padding 0.3s; }
+.nav.scrolled { background: rgba(255,255,255,0.96); box-shadow: 0 1px 0 #e8e8e8; padding: 14px 32px; }
+.nav.scrolled .nav-back { color: #3C3C3C; }
+.nav.scrolled .nav-logo { color: black; }
+.nav-logo { text-decoration: none; color: white; display: flex; align-items: center; transition: color 0.3s; }
+.nav-back { font-family: 'Courier New', monospace; font-size: 16px; letter-spacing: 0.08em; color: var(--white); text-decoration: none; opacity: 0.7; transition: opacity 0.2s, color 0.3s; }
+.nav-back:hover { opacity: 1; }
+
+/* HERO */
+.hero { background: #0a0a0a; min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 100px 24px; position: relative; overflow: hidden; text-align: center; }
+.hero::before { content: ''; position: absolute; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%); top: 50%; left: 50%; transform: translate(-50%, -50%); pointer-events: none; }
+.hero-label { display: inline-block; font-family: 'Courier New', monospace; font-size: 16px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white); background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3); padding: 4px 12px; border-radius: var(--radius); margin-bottom: 48px; }
+.hero-logo { width: min(320px, 80vw); margin-bottom: 48px; }
+.hero-title { font-family: 'Alfa Slab One', serif; font-size: clamp(32px, 6vw, 64px); font-weight: 400; color: var(--white); line-height: 1.1; margin-bottom: 20px; }
+.hero-sub { font-size: 17px; color: #888; max-width: 480px; line-height: 1.7; margin: 0 auto; }
+
+/* SECTIONS */
+.section { max-width: 800px; margin: 0 auto; padding: 100px 24px; }
+.section-tag { display: inline-block; font-family: 'Courier New', monospace; font-size: 16px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--white); background: #0a0a0a; padding: 4px 12px; border-radius: var(--radius); margin-bottom: 20px; }
+.section-title { font-family: 'Alfa Slab One', serif; font-size: clamp(28px, 4vw, 44px); font-weight: 400; color: var(--black); line-height: 1.15; margin-bottom: 20px; }
+.section-body { font-size: 17px; line-height: 1.8; color: var(--body-color); max-width: 600px; }
+
+.divider { width: 100%; height: 1px; background: #e8e8e8; max-width: 800px; margin: 0 auto; }
+
+/* META */
+.meta-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: #e8e8e8; border: 1px solid #e8e8e8; border-radius: 16px; overflow: hidden; margin-top: 48px; }
+.meta-item { background: var(--white); padding: 28px 24px; }
+.meta-label { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #0a0a0a; background: none; padding: 0; border-radius: 0; margin-bottom: 8px; font-family: 'Courier New', monospace; }
+.meta-value { font-size: 15px; font-weight: 700; color: var(--black); line-height: 1.4; }
+
+/* SCHETSEN */
+.sketches-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 48px; }
+.sketch-img { width: 100%; border-radius: 12px; border: 1px solid #e8e8e8; display: block; }
+
+/* VARIANTEN */
+.variants-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 48px; }
+.variant-card { background: #f8f8f6; border-radius: 12px; padding: 32px 24px; display: flex; align-items: center; justify-content: center; aspect-ratio: 1; }
+.variant-card img { width: 100%; max-width: 140px; object-fit: contain; }
+
+/* EINDRESULTAAT */
+.result-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-top: 48px; }
+.result-card { border-radius: 12px; padding: 40px 24px; display: flex; align-items: center; justify-content: center; aspect-ratio: 1; }
+.result-card.dark { background: #0a0a0a; }
+.result-card.light { background: #f8f8f6; border: 1px solid #e8e8e8; }
+.result-card.gold { background: #0a0a0a; }
+.result-card img { width: 100%; max-width: 160px; object-fit: contain; }
+
+/* MOCKUP */
+.mockup-wrap { margin-top: 48px; border-radius: 16px; overflow: hidden; }
+.mockup-wrap img { width: 100%; display: block; }
+
+/* CITAAT */
+.quote-section { background: #0a0a0a; padding: 100px 24px; text-align: center; }
+.quote-mark { font-family: 'Alfa Slab One', serif; font-size: 80px; font-weight: 400; color: var(--gold); line-height: 0.8; margin-bottom: 24px; display: block; }
+.quote-text { font-family: 'Alfa Slab One', serif; font-size: clamp(22px, 4vw, 36px); font-weight: 400; color: var(--white); max-width: 640px; margin: 0 auto 24px; line-height: 1.3; }
+.quote-author { font-family: 'Courier New', monospace; font-size: 16px; letter-spacing: 0.1em; color: var(--gold); text-transform: uppercase; }
+
+/* CTA */
+.cta { background: var(--white); padding: 100px 24px; text-align: center; }
+.cta-title { font-family: 'Alfa Slab One', serif; font-size: clamp(28px, 4vw, 48px); font-weight: 400; color: var(--black); margin-bottom: 16px; }
+.cta-sub { font-size: 16px; color: #888; margin-bottom: 40px; }
+.cta-btn { display: inline-block; background: var(--black); color: var(--white); font-family: 'Courier New', monospace; font-size: 16px; letter-spacing: -0.005em; padding: 14px 32px; border-radius: var(--radius); text-decoration: none; transition: background 0.2s; margin: 0 8px 12px; }
+.cta-btn:hover { background: #0a0a0a; }
+
+@media (max-width: 600px) {
+  .sketches-grid { grid-template-columns: 1fr; }
+  .variants-grid { grid-template-columns: 1fr 1fr; }
+  .result-grid { grid-template-columns: 1fr 1fr; }
+  .meta-grid { grid-template-columns: 1fr; }
+}
+
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.hero-label, .hero-logo, .hero-title, .hero-sub { animation: fadeUp 0.6s ease both; }
+.hero-label { animation-delay: 0.1s; }
+.hero-logo { animation-delay: 0.2s; }
+.hero-title { animation-delay: 0.3s; }
+.hero-sub { animation-delay: 0.4s; }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/" class="nav-logo"><svg width="130" height="83" viewBox="0 0 153 81" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M133.099 44.3026L137.423 28.6445C137.78 27.3528 138.955 26.4582 140.295 26.4582H144.191C145.517 26.4582 146.684 27.3354 147.053 28.6098L151.592 44.3026H145.237L144.563 40.879H139.946L139.194 44.3026H133.099ZM140.491 37.6888H143.941L142.255 29.8819L140.491 37.6888Z" fill="currentColor"/><path d="M122.301 44.3026C120.981 44.3026 119.819 43.4351 119.444 42.1703L114.785 26.4582H120.906L123.656 37.585L126.405 26.4582H132.267L127.344 42.212C126.955 43.4558 125.803 44.3026 124.5 44.3026H122.301Z" fill="currentColor"/><path d="M108.381 44.3026C106.762 44.3026 105.45 42.9905 105.45 41.3718V29.3891C105.45 27.7704 106.762 26.4582 108.381 26.4582C109.999 26.4582 111.311 27.7704 111.311 29.3891V41.3718C111.311 42.9905 109.999 44.3026 108.381 44.3026Z" fill="currentColor"/><path d="M84.7787 44.3026C83.956 44.3026 83.2891 43.6357 83.2891 42.813V27.9479C83.2891 27.1252 83.956 26.4582 84.7787 26.4582H87.6351C88.4579 26.4582 89.1248 27.1252 89.1248 27.9479V33.1758H94.6493V27.9479C94.6493 27.1252 95.3163 26.4582 96.139 26.4582H99.0213C99.844 26.4582 100.511 27.1252 100.511 27.9479V42.813C100.511 43.6357 99.844 44.3026 99.0213 44.3026H96.139C95.3163 44.3026 94.6493 43.6357 94.6493 42.813V37.2738H89.1248V42.813C89.1248 43.6357 88.4579 44.3026 87.6351 44.3026H84.7787Z" fill="currentColor"/><path d="M72.0463 44.7176C70.9569 44.7176 69.8503 44.5793 68.7264 44.3026C67.6025 44.0433 66.6514 43.6888 65.8733 43.2392L66.8071 39.0116C67.81 39.5476 68.7437 39.9021 69.6082 40.075C70.4901 40.2306 71.3027 40.3084 72.0463 40.3084C72.7379 40.3084 73.2566 40.196 73.6025 39.9712C73.9656 39.7464 74.1471 39.4439 74.1471 39.0634C74.1471 38.7176 73.9483 38.4496 73.5506 38.2594C73.1529 38.0519 72.6342 37.8617 71.9944 37.6888C71.3719 37.5159 70.7062 37.317 69.9973 37.0923C69.2883 36.8502 68.614 36.5389 67.9742 36.1585C67.3517 35.7608 66.8416 35.2421 66.444 34.6023C66.0463 33.9453 65.8474 33.124 65.8474 32.1384C65.8474 30.8934 66.15 29.8214 66.7552 28.9222C67.3604 28.0058 68.2249 27.3055 69.3489 26.8214C70.4728 26.3199 71.7955 26.0692 73.3172 26.0692C74.3373 26.0692 75.3316 26.2075 76.2999 26.4842C77.2855 26.7436 78.0722 27.098 78.6601 27.5476L77.7783 31.3603C76.8964 30.9972 76.101 30.7378 75.3921 30.5822C74.7004 30.4093 74.0434 30.3228 73.4209 30.3228C72.6947 30.3228 72.1414 30.4266 71.761 30.634C71.3806 30.8415 71.1904 31.1182 71.1904 31.464C71.1904 31.7925 71.3892 32.0606 71.7869 32.2681C72.1846 32.4755 72.6947 32.6744 73.3172 32.8646C73.9396 33.0548 74.6053 33.2709 75.3143 33.513C76.0232 33.7551 76.6889 34.075 77.3114 34.4727C77.9339 34.8704 78.444 35.3891 78.8417 36.0289C79.2394 36.6686 79.4382 37.4727 79.4382 38.441C79.4382 40.4467 78.7811 41.9943 77.467 43.0836C76.1702 44.173 74.3633 44.7176 72.0463 44.7176Z" fill="currentColor"/><path d="M66.0898 53.3756H67.3093C68.1193 53.3756 68.7685 53.6519 69.2568 54.2046C69.7452 54.7543 69.9893 55.5103 69.9893 56.4723C69.9893 57.4549 69.7408 58.2167 69.2437 58.7576C68.7495 59.2957 68.1149 59.5647 67.34 59.5647H66.0898V53.3756ZM66.8092 58.9375H67.318C67.9058 58.9375 68.3708 58.7196 68.7129 58.2839C69.055 57.8482 69.2261 57.2443 69.2261 56.4723C69.2261 55.7062 69.0536 55.1038 68.7085 54.6652C68.3664 54.2236 67.9029 54.0028 67.318 54.0028H66.8092V58.9375ZM75.1697 57.3014H72.0334C72.0334 57.819 72.1825 58.2459 72.4808 58.5822C72.782 58.9185 73.1505 59.0866 73.5862 59.0866C74.0014 59.0866 74.4298 59.0121 74.8714 58.8629L74.9898 59.4112C74.5863 59.5925 74.1155 59.6832 73.5774 59.6832C72.899 59.6832 72.3521 59.4653 71.9369 59.0296C71.5216 58.5939 71.314 58.0061 71.314 57.2663C71.314 56.5411 71.4997 55.9635 71.8711 55.5337C72.2454 55.1009 72.7279 54.8845 73.3186 54.8845C73.845 54.8845 74.2851 55.0848 74.6389 55.4854C74.9927 55.886 75.1697 56.4197 75.1697 57.0864V57.3014ZM74.424 56.7443C74.424 56.3875 74.3128 56.0878 74.0906 55.8451C73.8684 55.5995 73.6198 55.4766 73.3449 55.4766C72.9911 55.4766 72.6972 55.5936 72.4633 55.8275C72.2322 56.0615 72.1036 56.3671 72.0773 56.7443H74.424ZM79.9508 55.6477C79.5677 55.522 79.2066 55.4591 78.8674 55.4591C78.496 55.4591 78.2021 55.522 77.9857 55.6477C77.7693 55.7705 77.6611 55.9357 77.6611 56.1434C77.6611 56.275 77.7108 56.3905 77.8103 56.4899C77.9097 56.5864 78.1085 56.677 78.4068 56.7618L79.0604 56.9505C79.3616 57.0353 79.6072 57.1376 79.7973 57.2575C79.9874 57.3745 80.1292 57.5178 80.2228 57.6874C80.3193 57.8541 80.3675 58.0485 80.3675 58.2708C80.3675 58.7065 80.1847 59.0515 79.8192 59.3059C79.4537 59.5574 78.9887 59.6832 78.4243 59.6832C77.8629 59.6832 77.3994 59.5984 77.0339 59.4288L77.1655 58.8366C77.5485 59.0179 77.9594 59.1086 78.398 59.1086C78.7782 59.1086 79.0867 59.0384 79.3236 58.898C79.5633 58.7547 79.6832 58.5661 79.6832 58.3322C79.6832 58.1743 79.6233 58.0339 79.5034 57.9111C79.3864 57.7853 79.1086 57.6552 78.67 57.5207C78.3161 57.4125 78.0559 57.3321 77.8892 57.2794C77.7225 57.2239 77.5675 57.1435 77.4243 57.0382C77.281 56.9329 77.1713 56.8072 77.0953 56.661C77.0222 56.5147 76.9856 56.351 76.9856 56.1697C76.9856 55.7749 77.1581 55.462 77.5032 55.231C77.8483 55 78.3059 54.8845 78.8761 54.8845C79.2446 54.8845 79.654 54.9473 80.1043 55.0731L79.9508 55.6477ZM84.3503 53.2659C84.479 53.2659 84.5887 53.3127 84.6793 53.4063C84.77 53.4969 84.8153 53.6066 84.8153 53.7352C84.8153 53.8698 84.77 53.9823 84.6793 54.073C84.5916 54.1636 84.4819 54.209 84.3503 54.209C84.2304 54.209 84.1237 54.1622 84.0301 54.0686C83.9395 53.9721 83.8942 53.861 83.8942 53.7352C83.8942 53.6095 83.9395 53.4998 84.0301 53.4063C84.1237 53.3127 84.2304 53.2659 84.3503 53.2659ZM84.6837 59.5647H83.9994V55.5863H82.6528V54.9941H84.6837V59.5647ZM88.9648 57.8409C88.5379 58.0485 88.3244 58.2313 88.3244 58.3892C88.3244 58.474 88.3727 58.5456 88.4692 58.6041C88.5686 58.6626 88.7031 58.6919 88.8727 58.6919L90.4123 58.648C90.7779 58.648 91.0615 58.7372 91.2633 58.9156C91.468 59.0939 91.5703 59.3469 91.5703 59.6744C91.5703 60.192 91.3393 60.6043 90.8773 60.9114C90.4152 61.2184 89.8757 61.3719 89.2587 61.3719C88.7528 61.3719 88.339 61.2652 88.0174 61.0517C87.6957 60.8412 87.5349 60.5678 87.5349 60.2315C87.5349 59.8659 87.7834 59.5574 88.2805 59.3059C87.8682 59.1129 87.6621 58.8761 87.6621 58.5954C87.6621 58.2737 87.9282 57.9739 88.4604 57.6961C88.2147 57.547 88.0261 57.354 87.8945 57.1171C87.7629 56.8803 87.6972 56.6303 87.6972 56.3671C87.6972 55.9372 87.8434 55.5848 88.1358 55.31C88.4282 55.0322 88.7937 54.8932 89.2324 54.8932C89.5482 54.8932 89.8333 54.959 90.0877 55.0906L91.4431 54.8845V55.5512H90.5702C90.7018 55.7822 90.7676 56.0542 90.7676 56.3671C90.7676 56.7823 90.6229 57.1332 90.3334 57.4198C90.0439 57.7064 89.6769 57.8497 89.2324 57.8497C89.1388 57.8497 89.0496 57.8467 88.9648 57.8409ZM89.2324 57.3189C89.4839 57.3189 89.6886 57.2327 89.8465 57.0601C90.0073 56.8847 90.0877 56.6566 90.0877 56.3758C90.0877 56.0805 90.0102 55.8495 89.8552 55.6828C89.7003 55.5161 89.4926 55.4328 89.2324 55.4328C88.9897 55.4328 88.785 55.5205 88.6183 55.696C88.4545 55.8685 88.3727 56.0951 88.3727 56.3758C88.3727 56.6507 88.4545 56.8774 88.6183 57.0557C88.785 57.2312 88.9897 57.3189 89.2324 57.3189ZM89.2587 60.8412C89.709 60.8412 90.0921 60.7403 90.4079 60.5385C90.7267 60.3397 90.886 60.0926 90.886 59.7972C90.886 59.4931 90.6609 59.341 90.2105 59.341C90.0614 59.341 89.8041 59.3498 89.4385 59.3674C89.2075 59.3791 89.0262 59.3849 88.8946 59.3849C88.8303 59.3849 88.7294 59.4375 88.592 59.5428C88.4575 59.6481 88.3536 59.7534 88.2805 59.8586C88.2104 59.9668 88.1753 60.0779 88.1753 60.192C88.1753 60.3704 88.2747 60.5224 88.4735 60.6482C88.6724 60.7768 88.9341 60.8412 89.2587 60.8412ZM96.6147 59.5647H95.9304V56.6346C95.9304 56.2282 95.8646 55.9343 95.733 55.753C95.6043 55.5688 95.4011 55.4766 95.1233 55.4766C94.7051 55.4766 94.2563 55.7369 93.7767 56.2574V59.5647H93.0924V54.9941H93.7767V55.6653C94.2679 55.1447 94.7855 54.8845 95.3295 54.8845C96.1863 54.8845 96.6147 55.4021 96.6147 56.4373V59.5647ZM108.322 59.5297C108.193 59.5823 108.034 59.6086 107.844 59.6086C107.689 59.6086 107.535 59.5545 107.383 59.4463C107.231 59.3352 107.035 59.1203 106.795 58.8015C106.339 59.3893 105.788 59.6832 105.142 59.6832C104.624 59.6832 104.186 59.5194 103.826 59.1919C103.469 58.8615 103.291 58.4521 103.291 57.9637C103.291 57.6508 103.384 57.3555 103.571 57.0777C103.759 56.7969 104.108 56.4797 104.62 56.1258C104.134 55.5556 103.892 55.0585 103.892 54.6345C103.892 54.2251 104.026 53.8932 104.295 53.6387C104.567 53.3843 104.909 53.2571 105.322 53.2571C105.705 53.2571 106.021 53.3668 106.269 53.5861C106.518 53.8025 106.642 54.1037 106.642 54.4897C106.642 54.7675 106.557 55.0336 106.388 55.288C106.218 55.5424 105.901 55.8392 105.436 56.1785L106.73 57.7751C106.928 57.2663 107.076 56.9124 107.173 56.7136C107.272 56.5147 107.411 56.3437 107.589 56.2004C107.768 56.0542 107.997 55.9811 108.278 55.9811H108.313V56.582H108.278C108.1 56.582 107.929 56.677 107.765 56.8671C107.601 57.0572 107.385 57.5222 107.116 58.262C107.335 58.5252 107.506 58.7138 107.629 58.8278C107.752 58.9419 107.889 58.9989 108.041 58.9989C108.111 58.9989 108.205 58.9901 108.322 58.9726V59.5297ZM105.115 55.7661C105.461 55.5264 105.7 55.3143 105.835 55.1301C105.972 54.9459 106.041 54.75 106.041 54.5423C106.041 54.3142 105.971 54.1417 105.83 54.0247C105.693 53.9078 105.526 53.8493 105.33 53.8493C105.102 53.8493 104.911 53.9195 104.756 54.0598C104.604 54.1973 104.528 54.3888 104.528 54.6345C104.528 54.9503 104.724 55.3275 105.115 55.7661ZM106.427 58.3541L104.953 56.5381C104.608 56.7896 104.364 57.0221 104.221 57.2356C104.08 57.4461 104.01 57.6801 104.01 57.9374C104.01 58.2591 104.123 58.5296 104.348 58.7489C104.576 58.9682 104.846 59.0779 105.159 59.0779C105.648 59.0779 106.07 58.8366 106.427 58.3541ZM114.647 53.3756H115.866C116.676 53.3756 117.326 53.6519 117.814 54.2046C118.302 54.7543 118.547 55.5103 118.547 56.4723C118.547 57.4549 118.298 58.2167 117.801 58.7576C117.307 59.2957 116.672 59.5647 115.897 59.5647H114.647V53.3756ZM115.366 58.9375H115.875C116.463 58.9375 116.928 58.7196 117.27 58.2839C117.612 57.8482 117.783 57.2443 117.783 56.4723C117.783 55.7062 117.611 55.1038 117.266 54.6652C116.924 54.2236 116.46 54.0028 115.875 54.0028H115.366V58.9375ZM123.727 57.3014H120.591C120.591 57.819 120.74 58.2459 121.038 58.5822C121.339 58.9185 121.708 59.0866 122.143 59.0866C122.559 59.0866 122.987 59.0121 123.429 58.8629L123.547 59.4112C123.143 59.5925 122.673 59.6832 122.135 59.6832C121.456 59.6832 120.909 59.4653 120.494 59.0296C120.079 58.5939 119.871 58.0061 119.871 57.2663C119.871 56.5411 120.057 55.9635 120.428 55.5337C120.803 55.1009 121.285 54.8845 121.876 54.8845C122.402 54.8845 122.842 55.0848 123.196 55.4854C123.55 55.886 123.727 56.4197 123.727 57.0864V57.3014ZM122.981 56.7443C122.981 56.3875 122.87 56.0878 122.648 55.8451C122.426 55.5995 122.177 55.4766 121.902 55.4766C121.548 55.4766 121.254 55.5936 121.02 55.8275C120.789 56.0615 120.661 56.3671 120.634 56.7443H122.981ZM129.192 54.9941L127.46 59.5647H126.837L125.113 54.9941H125.859L127.153 58.6304L128.447 54.9941H129.192ZM134.517 57.3014H131.381C131.381 57.819 131.53 58.2459 131.829 58.5822C132.13 58.9185 132.498 59.0866 132.934 59.0866C133.349 59.0866 133.778 59.0121 134.219 58.8629L134.338 59.4112C133.934 59.5925 133.463 59.6832 132.925 59.6832C132.247 59.6832 131.7 59.4653 131.285 59.0296C130.869 58.5939 130.662 58.0061 130.662 57.2663C130.662 56.5411 130.847 55.9635 131.219 55.5337C131.593 55.1009 132.076 54.8845 132.666 54.8845C133.193 54.8845 133.633 55.0848 133.987 55.4854C134.34 55.886 134.517 56.4197 134.517 57.0864V57.3014ZM133.772 56.7443C133.772 56.3875 133.661 56.0878 133.438 55.8451C133.216 55.5995 132.968 55.4766 132.693 55.4766C132.339 55.4766 132.045 55.5936 131.811 55.8275C131.58 56.0615 131.451 56.3671 131.425 56.7443H133.772ZM139.443 59.5647H137.575V53.9677H136.382V53.3756H138.259V58.9726H139.443V59.5647ZM143.4 54.8845C144.028 54.8845 144.529 55.1038 144.9 55.5424C145.271 55.9811 145.457 56.5586 145.457 57.2751C145.457 57.9973 145.271 58.5793 144.9 59.0208C144.529 59.4624 144.028 59.6832 143.4 59.6832C142.768 59.6832 142.267 59.4639 141.895 59.0252C141.527 58.5837 141.343 58.0003 141.343 57.2751C141.343 56.5557 141.528 55.9781 141.9 55.5424C142.271 55.1038 142.771 54.8845 143.4 54.8845ZM143.4 59.0866C143.815 59.0866 144.143 58.9112 144.382 58.5603C144.622 58.2094 144.742 57.7839 144.742 57.2838C144.742 56.7575 144.624 56.3247 144.387 55.9855C144.15 55.6462 143.821 55.4766 143.4 55.4766C142.976 55.4766 142.647 55.6448 142.413 55.9811C142.179 56.3144 142.062 56.7487 142.062 57.2838C142.062 57.7926 142.18 58.221 142.417 58.569C142.654 58.9141 142.982 59.0866 143.4 59.0866ZM147.729 55.5863C147.881 55.3758 148.086 55.2061 148.343 55.0775C148.603 54.9488 148.877 54.8845 149.163 54.8845C149.69 54.8845 150.102 55.1023 150.4 55.538C150.702 55.9708 150.852 56.5352 150.852 57.2312C150.852 57.933 150.694 58.5179 150.379 58.9857C150.066 59.4507 149.643 59.6832 149.111 59.6832C148.827 59.6832 148.561 59.613 148.313 59.4726C148.067 59.3293 147.872 59.1407 147.729 58.9068V61.3719H147.045V54.9941H147.729V55.5863ZM147.729 56.2662V58.1655C147.858 58.4228 148.032 58.6378 148.251 58.8103C148.47 58.9828 148.697 59.0691 148.931 59.0691C149.299 59.0691 149.592 58.8966 149.808 58.5515C150.028 58.2064 150.137 57.778 150.137 57.2663C150.137 56.7399 150.033 56.31 149.826 55.9767C149.618 55.6433 149.329 55.4766 148.957 55.4766C148.475 55.4766 148.065 55.7398 147.729 56.2662Z" fill="currentColor"/><path fill-rule="evenodd" clip-rule="evenodd" d="M8.76244 39.089C8.76244 41.8232 9.23671 44.4467 10.1074 46.8817C10.5712 48.1789 11.1476 49.4226 11.8247 50.601L15.2653 48.4323L47.5067 28.1105L50.9473 25.9419L60.4692 19.9402C61.503 19.2886 61.8562 17.9911 61.258 17.0421C60.6599 16.0931 59.337 15.8521 58.3032 16.5037L48.3286 22.7906C44.1362 18.5655 38.3248 15.949 31.9024 15.949C19.1226 15.949 8.76244 26.3091 8.76244 39.089ZM13.6478 44.6501C13.1125 42.8907 12.8246 41.0234 12.8246 39.089C12.8246 28.5526 21.366 20.0112 31.9024 20.0112C36.8703 20.0112 41.3946 21.91 44.7893 25.0215L13.6478 44.6501Z" fill="currentColor"/><path fill-rule="evenodd" clip-rule="evenodd" d="M56.3718 41.3053C56.3718 38.5711 55.8976 35.9476 55.0269 33.5126C54.563 32.2154 53.9867 30.9717 53.3095 29.7933L49.869 31.962L17.6275 52.2838L14.187 54.4524L4.66506 60.4541C3.63124 61.1057 3.27811 62.4032 3.87628 63.3522C4.47437 64.3011 5.79729 64.5422 6.83111 63.8906L16.8057 57.6037C20.9981 61.8288 26.8095 64.4453 33.2319 64.4453C46.0117 64.4453 56.3718 54.0852 56.3718 41.3053ZM51.4864 35.7442C52.0218 37.5036 52.3096 39.3709 52.3096 41.3053C52.3096 51.8417 43.7682 60.3831 33.2319 60.3831C28.264 60.3831 23.7397 58.4843 20.345 55.3728L51.4864 35.7442Z" fill="currentColor"/></svg></a>
+  <a href="/" class="nav-back">← Portfolio</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <p class="hero-label">Logo-ontwerp & Branding</p>
+  <img src="logo-kleur.png" alt="Jones Vastgoed Advies logo" class="hero-logo">
+  <h1 class="hero-title">Jones Vastgoed Advies</h1>
+  <p class="hero-sub">Een logo dat vastgoed, Zeeuwse landbouwgrond en de iconische Zeeuwse knop combineert in één herkenbaar, klassiek beeldmerk.</p>
+</section>
+
+<!-- OPDRACHT -->
+<section class="section">
+  <p class="section-tag">De opdracht</p>
+  <h2 class="section-title">Een nieuw begin, een nieuw identiteit</h2>
+  <p class="section-body">Jones Vastgoed Advies is dé vastgoedspecialist van Zeeland. De vraag was kort maar duidelijk: een herkenbaar en stijlvol logo met een subtiele verwijzing naar vastgoed, een klassieke en luxueuze uitstraling, en bij voorkeur een knipoog naar Zeeland. Het logo moest ook uitstekend werken op fysieke producten zoals visitekaartjes, pennen en briefpapier. Omdat het een nieuw bedrijf was, bestond er nog geen huisstijl. De volledige focus lag op een sterk logo.</p>
+
+  <div class="meta-grid">
+    <div class="meta-item">
+      <p class="meta-label">Type</p>
+      <p class="meta-value">Logo-ontwerp</p>
+    </div>
+    <div class="meta-item">
+      <p class="meta-label">Tools</p>
+      <p class="meta-value">Adobe Illustrator</p>
+    </div>
+    <div class="meta-item">
+      <p class="meta-label">Jaar</p>
+      <p class="meta-value">Augustus 2021</p>
+    </div>
+  </div>
+
+  <div style="margin-top:32px;display:grid;grid-template-columns:1fr 1fr;gap:12px">
+    <div style="background:#f8f8f6;border-radius:12px;padding:20px 24px;display:flex;align-items:center;gap:12px">
+      <span style="font-size:20px">🏛</span>
+      <span style="font-size:14px;color:#3C3C3C">Verwijzing naar vastgoed</span>
+    </div>
+    <div style="background:#f8f8f6;border-radius:12px;padding:20px 24px;display:flex;align-items:center;gap:12px">
+      <span style="font-size:20px">✦</span>
+      <span style="font-size:14px;color:#3C3C3C">Luxueuze en klassieke uitstraling</span>
+    </div>
+    <div style="background:#f8f8f6;border-radius:12px;padding:20px 24px;display:flex;align-items:center;gap:12px">
+      <span style="font-size:20px">🌊</span>
+      <span style="font-size:14px;color:#3C3C3C">Verwijzing naar Zeeland</span>
+    </div>
+    <div style="background:#f8f8f6;border-radius:12px;padding:20px 24px;display:flex;align-items:center;gap:12px">
+      <span style="font-size:20px">🖨</span>
+      <span style="font-size:14px;color:#3C3C3C">Sterk op fysieke uitingen</span>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SCHETSEN -->
+<section class="section">
+  <p class="section-tag">Brainstorm</p>
+  <h2 class="section-title">Eerst met pen en papier</h2>
+  <p class="section-body">Zoals bij elke opdracht begon ik met een moodboard op basis van de briefing. Daarna schetste ik bewust met potlood en papier om verschillende richtingen te verkennen. Ik werkte toe naar drie variaties: één concept dat volledig aansloot op alle wensen en eisen, een alternatieve versie, en een meer out-of-the-box richting om te laten zien welke creatieve mogelijkheden er nog meer waren.</p>
+  <div class="sketches-grid">
+    <img src="schetsen-1.png" alt="Schetsen fase 1" class="sketch-img">
+    <img src="schetsen-2.png" alt="Schetsen fase 2" class="sketch-img">
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- VARIANTEN -->
+<section class="section">
+  <p class="section-tag">Van schets naar digitaal</p>
+  <h2 class="section-title">Drie richtingen uitgewerkt</h2>
+  <p class="section-body">De drie varianten zijn digitaal uitgewerkt en in zwart-wit aangeleverd, aangevuld met een kleursuggestie. Het eerste concept, mijn persoonlijke favoriet, verbeeldt een opstapeling van daken: herkenbaar als woningen, maar tegelijk ook als een abstract gebouw. Daarin zit ook een subtiele verwijzing naar tarwe, zoals je die bij veel Zeeuwse boerderijen terugziet. Het tweede concept brengt de letter "J" duidelijker naar voren in een minimalistische lijnillustratie. Het derde concept koos voor een volledig andere richting, met meer nadruk op de directe verkoop van huizen en gebouwen.</p>
+  <div class="variants-grid">
+    <div class="variant-card" style="background:#f8f8f6">
+      <img src="eerste-versie-3.png" alt="Variant 1 — chevron">
+    </div>
+    <div class="variant-card" style="background:#f8f8f6">
+      <img src="eerste-versie-2.png" alt="Variant 2 — gebouw outline">
+    </div>
+    <div class="variant-card" style="background:#f8f8f6">
+      <img src="eerste-versie-1.png" alt="Variant 3 — huis vorm">
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- EINDRESULTAAT -->
+<section class="section">
+  <p class="section-tag">Eindresultaat</p>
+  <h2 class="section-title">Het definitieve logo</h2>
+  <p class="section-body">Concept 1 werd direct als favoriet aangewezen. De opdrachtgever wilde graag nóg duidelijker terugzien dat het bedrijf zich ook bezighoudt met de verkoop van landbouwgrond, en vroeg om extra Zeeuwse elementen. Op basis van die feedback verfijnde ik het ontwerp en voegde een gouden gradient toe voor een luxere uitstraling. Het eindresultaat bevat drie bewuste elementen: een appartementencomplex dat vastgoed verbeeldt, een tarweaar die verwijst naar de Zeeuwse landbouwgrond, en twee ringen die de ronde vormen van de Zeeuwse knop weerspiegelen. Het logo is uitgewerkt in drie varianten voor maximale toepasbaarheid.</p>
+  <div class="result-grid">
+    <div class="result-card light">
+      <img src="logo-zwart.png" alt="Logo zwart">
+    </div>
+    <div class="result-card dark">
+      <img src="logo-kleur.png" alt="Logo goud op zwart">
+    </div>
+    <div class="result-card dark">
+      <img src="logo-wit.png" alt="Logo wit op zwart">
+    </div>
+  </div>
+
+  <div class="mockup-wrap" style="margin-top:24px">
+    <img src="visitekaartje.png" alt="Visitekaartje mockup Jones Vastgoed Advies">
+  </div>
+</section>
+
+<!-- CITAAT -->
+<section class="quote-section">
+  <span class="quote-mark">"</span>
+  <p class="quote-text">Hij is supergaaf geworden, ben er onwijs blij mee!</p>
+  <p class="quote-author">— David Jones</p>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <h2 class="cta-title">Meer werk bekijken</h2>
+  <p class="cta-sub">Terug naar het overzicht of bekijk een andere case.</p>
+  <a href="/" class="cta-btn">← Portfolio</a>
+</section>
+
+<script>
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('.nav');
+  if (window.scrollY > 40) nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+});
+</script>
+</body>
+</html>
